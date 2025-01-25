@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_root/Screens/Home/home_screen.dart';
 import 'package:green_root/Screens/onboarding/signin_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -92,95 +93,179 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign up'),
-        backgroundColor: Color.fromARGB(255, 9, 207, 148),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: _nameController, // name controller used here
-              decoration: InputDecoration(
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-              validator: _validateName, // name validation used here
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: _userIdController, // user id controller used here
-              decoration: InputDecoration(
-                labelText: 'User ID',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: _emailController, //email controller used here
-              decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
-              validator: _validateEmail, // email validation used here
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: _phoneController, // phone controller used here
-              decoration: InputDecoration(
-                labelText: 'Phone Number',
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-              validator: _validatePhone, // phone validation used here
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: _passwordController, // password controller used here
-              decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-              obscureText: true,
-              validator: _validatePassword, // password validation used here
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller:
-                  _confirmPasswordController, // confirm password controller used here
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
-              ),
-              obscureText: true,
-              validator: _validateConfirmPassword, // confirm password validation used here
-            ),
-            const SizedBox(height: 60),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (ctx) => SigninScreen(),
+      body: Stack(
+        children: [
+          Container(
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage('assets/background.jpg'),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 60),
+                    Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(255, 0, 255, 183),
                       ),
-                    );
-                  },
-                  child: Text('Already have an account? Sign In'),
+                    ),
+                    const SizedBox(height: 20),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          labelText: 'Name',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.person),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                        validator: _validateName,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _userIdController,
+                        decoration: InputDecoration(
+                          labelText: 'User ID',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.account_circle),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.email),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                        validator: _validateEmail,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _phoneController,
+                        decoration: InputDecoration(
+                          labelText: 'Phone Number',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.phone),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                        keyboardType: TextInputType.number,
+                        validator: _validatePhone,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.lock),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                        obscureText: true,
+                        validator: _validatePassword,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                      child: TextFormField(
+                        controller: _confirmPasswordController,
+                        decoration: InputDecoration(
+                          labelText: 'Confirm Password',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.lock),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.8),
+                        ),
+                        obscureText: true,
+                        validator: _validateConfirmPassword,
+                      ),
+                    ),
+                    const SizedBox(height: 60),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) => SigninScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Already have an account? Sign In',
+                            style: TextStyle(color: const Color.fromARGB(255, 0, 255, 234)),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (ctx) => HomeScreen(),
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 15),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            backgroundColor: Colors.teal,
+                           surfaceTintColor: const Color.fromARGB(255, 255, 255, 255),
+                          ),
+                          child: Text('Sign Up'),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Sign Up'),
-                ),
-              ],
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
